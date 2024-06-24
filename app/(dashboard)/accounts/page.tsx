@@ -14,6 +14,12 @@ const data: Payment[] = [
     amount: 100,
     status: "pending",
     email: "m@example.com",
+  },
+  {
+    id: "711111",
+    amount: 101,
+    status: "success",
+    email: "am@example.com",
   }
 ]
 
