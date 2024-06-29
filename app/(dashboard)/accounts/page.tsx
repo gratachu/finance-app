@@ -43,6 +43,8 @@ const AccountPage = () => {
             columns={columns}
             data={data}
             filterKey={"email"}
+            onDelete={() => {}}
+            disabled={false}
           />
         </CardContent>
       </Card>
