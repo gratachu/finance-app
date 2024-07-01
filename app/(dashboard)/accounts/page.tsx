@@ -4,27 +4,15 @@ import {Plus} from "lucide-react";
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import {Button} from "@/components/ui/button";
 import {useNewAccount} from "@/features/accounts/hooks/use-new-account";
+import {useGetAccounts} from "@/features/accounts/api/use-get-accounts";
 
-import {columns, Payment} from "@/app/(dashboard)/accounts/columns";
+import {columns} from "@/app/(dashboard)/accounts/columns";
 import {DataTable} from "@/components/ui/data-table";
-
-const data: Payment[] = [
-  {
-    id: "728ed52f",
-    amount: 100,
-    status: "pending",
-    email: "m@example.com",
-  },
-  {
-    id: "711111",
-    amount: 101,
-    status: "success",
-    email: "am@example.com",
-  }
-]
 
 const AccountPage = () => {
   const newAccount = useNewAccount()
+  const accountsQuery = useGetAccounts()
+  const accounts = accountsQuery.data || []
 
   return (
     <div className={"max-w-screen-2xl mx-auto w-full pb-10 -mt-24"}>
@@ -41,8 +29,8 @@ const AccountPage = () => {
         <CardContent>
           <DataTable
             columns={columns}
-            data={data}
-            filterKey={"email"}
+            data={accounts}
+            filterKey={"name"}
             onDelete={() => {}}
             disabled={false}
           />

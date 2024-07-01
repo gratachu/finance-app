@@ -17,7 +17,7 @@ const app = new Hono()
         return c.json({error: "Unauthorized" }, 401)
       }
 
-      const [data] = await db
+      const data = await db
         .select({
           id: accounts.id,
           name: accounts.name,
