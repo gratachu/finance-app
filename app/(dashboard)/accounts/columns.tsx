@@ -6,6 +6,7 @@ import {Checkbox} from "@/components/ui/checkbox";
 import {ArrowUpDown} from "lucide-react";
 import {InferResponseType} from "hono";
 import {client} from "@/lib/hono";
+import {Actions} from "@/app/(dashboard)/accounts/actions";
 
 export type ResponseType = InferResponseType<typeof client.api.accounts.$get, 200>["data"][0]
  
@@ -32,10 +33,6 @@ export const columns: ColumnDef<ResponseType>[] = [
     enableSorting: false,
     enableHiding: false,
   },
-  // {
-  //   accessorKey: "status",
-  //   header: "Status",
-  // },
   {
     accessorKey: "name",
     header: ({ column }) => {
@@ -50,8 +47,8 @@ export const columns: ColumnDef<ResponseType>[] = [
     )
     },
   },
-  // {
-  //   accessorKey: "amount",
-  //   header: "Amount",
-  // },
+  {
+    id: "actions",
+    cell: ({ row }) => <Actions id={row.original.id} />
+  }
 ]
