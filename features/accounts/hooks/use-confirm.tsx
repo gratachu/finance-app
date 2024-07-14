@@ -52,7 +52,7 @@ export const useConfirm = (
             Confirm
           </Button>
         </DialogFooter>
-      </DialogContent>k
+      </DialogContent>
     </Dialog>
   )
 
