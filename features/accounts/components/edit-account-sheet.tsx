@@ -14,6 +14,7 @@ import {
   SheetTitle
 } from "@/components/ui/sheet"
 import {useEditAccount} from "@/features/accounts/api/use-edit-account";
+import {useDeleteAccount} from "@/features/accounts/api/use-delete-account";
 
 const formSchema = insertAccountSchema.pick({
   name: true,
@@ -26,8 +27,9 @@ export const EditAccountSheet = () => {
 
   const accountQuery = useGetAccount(id)
   const editMutation = useEditAccount(id)
+  const deleteMutation = useDeleteAccount(id)
 
-  const isPending = editMutation.isPending
+  const isPending = editMutation.isPending || deleteMutation.isPending
 
   const isLoading = accountQuery.isLoading
 
@@ -66,6 +68,7 @@ export const EditAccountSheet = () => {
             onSubmit={onSubmit}
             disabled={isPending}
             defaultValues={defaultValues}
+            onDelete={() => deleteMutation.mutate()}
           />
           )
         }
