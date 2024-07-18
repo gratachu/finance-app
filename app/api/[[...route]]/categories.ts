@@ -68,7 +68,6 @@ const app = new Hono()
   .post(
     "/",
     clerkMiddleware(),
-    // insertAccountSchema をvalidateしたいが、userIdはauthから取得するためvalidateをスキップしたい
     zValidator("json", insertCategorySchema.pick({
       name: true,
     })),
