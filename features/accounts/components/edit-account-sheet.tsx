@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/sheet"
 import {useEditAccount} from "@/features/accounts/api/use-edit-account";
 import {useDeleteAccount} from "@/features/accounts/api/use-delete-account";
-import {useConfirm} from "@/features/accounts/hooks/use-confirm";
+import {useConfirm} from "@/hooks/use-confirm";
 
 const formSchema = insertAccountSchema.pick({
   name: true,

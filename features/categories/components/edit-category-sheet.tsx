@@ -6,7 +6,7 @@ import {useGetCategory} from "@/features/categories/api/use-get-category";
 import {useOpenCategory} from "@/features/categories/hooks/use-open-category";
 import {useEditCategory} from "@/features/categories/api/use-edit-category";
 import {useDeleteCategory} from "@/features/categories/api/use-delete-category";
-import {useConfirm} from "@/features/accounts/hooks/use-confirm";
+import {useConfirm} from "@/hooks/use-confirm";
 
 import {insertCategorySchema} from "@/db/schema";
 import {
