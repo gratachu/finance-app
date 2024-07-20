@@ -25,7 +25,7 @@ import {
 import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
 import {Trash} from "lucide-react";
-import { useConfirm } from "@/features/accounts/hooks/use-confirm";
+import {useConfirm} from "@/hooks/use-confirm";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
