@@ -8,7 +8,7 @@ import {useNewCategory} from "@/features/categories/hooks/use-new-category";
 import {useBulkDeleteCategories} from "@/features/categories/api/use-bulk-delete-categories";
 import {useGetCategories} from "@/features/categories/api/use-get-categories";
 
-import {columns} from "@/app/(dashboard)/accounts/columns";
+import {columns} from "@/app/(dashboard)/categories/columns";
 import {DataTable} from "@/components/ui/data-table";
 import {Skeleton} from "@/components/ui/skeleton";
 
