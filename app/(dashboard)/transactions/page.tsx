@@ -3,7 +3,7 @@ import {Loader2, Plus} from "lucide-react";
 
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import {Button} from "@/components/ui/button";
-import {useNewAccount} from "@/features/accounts/hooks/use-new-account";
+import {useNewTransaction} from "@/features/transactions/hooks/use-new-transaction";
 import {useGetAccounts} from "@/features/accounts/api/use-get-accounts";
 import {useBulkDeleteAccounts} from "@/features/accounts/api/use-bulk-delete-accounts";
 
@@ -12,7 +12,7 @@ import {DataTable} from "@/components/ui/data-table";
 import {Skeleton} from "@/components/ui/skeleton";
 
 const TransactionsPage = () => {
-  const newAccount = useNewAccount()
+  const newTransaction = useNewTransaction()
   const deleteAccounts = useBulkDeleteAccounts()
   const accountsQuery = useGetAccounts()
   const accounts = accountsQuery.data || []
@@ -43,7 +43,7 @@ const TransactionsPage = () => {
           <CardTitle className={"text-xl line-clamp-1"}>
             Transaction History
           </CardTitle>
-          <Button onClick={newAccount.onOpen} size={"sm"}>
+          <Button onClick={newTransaction.onOpen} size={"sm"}>
             <Plus className={"size-4 mr-2"}/>
             Add new
           </Button>
