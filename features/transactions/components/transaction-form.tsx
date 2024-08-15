@@ -4,9 +4,9 @@ import {useForm} from "react-hook-form";
 
 import {insertTransactionSchema} from "@/db/schema";
 import {Form, FormControl, FormField, FormItem, FormLabel} from "@/components/ui/form";
-import {FormInput, Trash} from "lucide-react";
-import {Input} from "@/components/ui/input";
+import {Trash} from "lucide-react";
 import {Button} from "@/components/ui/button";
+import {DatePicker} from "@/components/date-picker";
 import {Select} from "@/components/select";
 
 const formSchema = z.object({
@@ -64,6 +64,21 @@ export const TransactionForm = ({
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit)} className={"space-y-4 pt-4"}>
+        <FormField
+          name="date"
+          control={form.control}
+          render={({field}) => (
+            <FormItem>
+              <FormControl>
+                <DatePicker
+                  value={field.value}
+                  onChange={field.onChange}
+                  disabled={disabled}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
         <FormField
           name="accountId"
           control={form.control}
