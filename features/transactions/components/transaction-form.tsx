@@ -11,6 +11,7 @@ import {AmountInput} from "@/components/amount-input";
 import {DatePicker} from "@/components/date-picker";
 import {insertTransactionSchema} from "@/db/schema";
 import {Form, FormControl, FormField, FormItem, FormLabel} from "@/components/ui/form";
+import {convertAmountToMiliunits} from "@/lib/utils";
 
 const formSchema = z.object({
   date: z.coerce.date(),
@@ -57,7 +58,13 @@ export const TransactionForm = ({
   })
 
   const handleSubmit = (values: FormValues) => {
-    console.log({ values })
+    const amount = parseFloat(values.amount)
+    const amountInMiliunits = convertAmountToMiliunits(amount)
+
+    onSubmit({
+      ...values,
+      amount: amountInMiliunits,
+    })
   }
 
   const handleDelete = () => {
@@ -180,7 +187,7 @@ export const TransactionForm = ({
           )}
         />
         <Button className={"w-full"} disabled={disabled}>
-          {id ? "Save changes" : "Create account"}
+          {id ? "Save changes" : "Create transaction"}
         </Button>
         { !!id && (<Button
           type={"button"}
@@ -191,7 +198,7 @@ export const TransactionForm = ({
           variant={"outline"}
         >
           <Trash className={"size-4 mr-2"} />
-          Delete account
+          Delete transaction
         </Button>
         )}
       </form>
